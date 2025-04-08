@@ -4,8 +4,14 @@ set -xe
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-touch -t "202501010000.00" "$SCRIPT_DIR/version_a/example/script.py" 
-touch -t "202501010000.00" "$SCRIPT_DIR/version_b/example/script.py"
+A_DIR=$SCRIPT_DIR/version_a/example/
+B_DIR=$SCRIPT_DIR/version_b/example/
 
-"$SCRIPT_DIR/version_a/example/run.sh"
-"$SCRIPT_DIR/version_b/example/run.sh"
+touch -t "202501010000" "$A_DIR/script.py"
+touch -t "202501010000" "$B_DIR/script.py" 
+
+docker build --no-cache --tag test-a $A_DIR
+docker run --rm test-a
+
+docker build --no-cache --tag test-b $B_DIR
+docker run --rm test-b
