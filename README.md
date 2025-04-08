@@ -1,6 +1,6 @@
-Recipe:
+# Recipe
 
-Run the script. Observe two runs output the same to stdout:
+Run the `./test.sh`. Observe two runs output the same to stdout:
 
 > docker run --rm test-a
 
