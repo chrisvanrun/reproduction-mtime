@@ -13,7 +13,9 @@ Run the script. Observe two runs output the same to stdout:
 
 Eventhough test-b should print 'version B'.
 
-And that his is dispite:
+And that this is dispite:
 - Different paths
 - An additional step BEFORE the `COPY script.py`
 - `--no-cache` on the build of `test-b`
+
+Changing the direct parent directory (`example/`) or different mtime prevents this from happening.
